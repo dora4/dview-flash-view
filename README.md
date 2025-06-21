@@ -2,6 +2,9 @@ dview-flash-view
 ![Release](https://jitpack.io/v/dora4/dview-flash-view.svg)
 --------------------------------
 
+#### 卡片
+![DORA视图 激光生成器](https://github.com/user-attachments/assets/e1c61a9c-57cf-4b38-b0fc-46df9c55f228)
+
 #### Gradle依赖配置
 
 ```groovy
