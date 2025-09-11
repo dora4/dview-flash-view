@@ -1,5 +1,6 @@
 package dora.widget
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
@@ -11,20 +12,21 @@ import kotlin.math.tan
 class DoraFlashView : FrameLayout {
 
     private var transX = 0f
-    private var deltaX = 0f
+    private var deltaX = 20f
     private lateinit var gradient: LinearGradient
     private lateinit var gradientMatrix: Matrix
     private val defaultColor = 0x00ffffff
-    private var highlightColor = 0x00ffffff
+    private var bgColor = Color.BLACK
+    private var highlightColor = 0x3fffffff
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private var gradientSize = 0f
+    private var gradientSize = 40f
     private var outSize = 0f
     private var type = TYPE_NORMAL
     // 取值区间（-90°, 90°）
     private var rotateAngle: Float = 0f
 
     private fun init() {
-        setBackgroundColor(Color.BLACK)
+        setBackgroundColor(bgColor)
         if (type == TYPE_BLUR) {
             gradient = LinearGradient(
                     -gradientSize,
@@ -90,10 +92,11 @@ class DoraFlashView : FrameLayout {
     ) : super(context, attrs, defStyle) {
         val a = context.obtainStyledAttributes(attrs, R.styleable.DoraFlashView, defStyle, 0)
         type = a.getInt(R.styleable.DoraFlashView_dview_fv_type, TYPE_NORMAL)
-        rotateAngle = a.getFloat(R.styleable.DoraFlashView_dview_fv_rotateAngle, 0f)
-        deltaX = a.getDimension(R.styleable.DoraFlashView_dview_fv_deltaX, 20f)
-        gradientSize = a.getDimension(R.styleable.DoraFlashView_dview_fv_gradientSize, 40f)
-        highlightColor = a.getColor(R.styleable.DoraFlashView_dview_fv_highlightColor, 0x3fffffff)
+        rotateAngle = a.getFloat(R.styleable.DoraFlashView_dview_fv_rotateAngle, rotateAngle)
+        deltaX = a.getDimension(R.styleable.DoraFlashView_dview_fv_deltaX, deltaX)
+        gradientSize = a.getDimension(R.styleable.DoraFlashView_dview_fv_gradientSize, gradientSize)
+        bgColor = a.getColor(R.styleable.DoraFlashView_dview_fv_bgColor, bgColor)
+        highlightColor = a.getColor(R.styleable.DoraFlashView_dview_fv_highlightColor, highlightColor)
         a.recycle()
     }
 }

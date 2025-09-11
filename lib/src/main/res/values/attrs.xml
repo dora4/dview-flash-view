@@ -3,9 +3,10 @@
 <resources>
     <declare-styleable name="DoraFlashView">
         <attr name="dview_fv_rotateAngle" format="float" />
-        <attr name="dview_fv_deltaX" format="dimension" />
-        <attr name="dview_fv_gradientSize" format="dimension" />
-        <attr name="dview_fv_highlightColor" format="color"/>
+        <attr name="dview_fv_deltaX" format="dimension|reference" />
+        <attr name="dview_fv_gradientSize" format="dimension|reference" />
+        <attr name="dview_fv_bgColor" format="color|reference"/>
+        <attr name="dview_fv_highlightColor" format="color|reference"/>
         <attr name="dview_fv_type">
             <enum name="normal" value="0" />
             <enum name="blur" value="1" />
